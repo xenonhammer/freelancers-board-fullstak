@@ -43,7 +43,7 @@ class Board extends React.Component{
         document.documentElement.scrollTop = 0
     }
     onScroll () {
-        if (document.documentElement.clientHeight + document.documentElement.scrollTop + 50 >= 
+        if (document.documentElement.clientHeight + (window.pageYOffset || document.documentElement.scrollTop) + 150 >= 
             Math.max(
                 document.documentElement.clientHeight, 
                 document.documentElement.scrollHeight, 
