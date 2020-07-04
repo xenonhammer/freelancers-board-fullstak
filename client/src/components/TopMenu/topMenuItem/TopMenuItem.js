@@ -51,7 +51,7 @@ class TopMenuItem extends React.Component{
         > 
           {items => ({ x, opacity, height, paddingTop, paddingBottom, paddingLeft, paddingRight }) => (
             <animated.div 
-              onClick ={items.enable() 
+              onClick ={items.enable() && !this.props.loading
               ?() => items.setDisable() 
               :() => {items.setEnabled();  items.setStartDownload()}}
               style={{
@@ -77,6 +77,7 @@ class TopMenuItem extends React.Component{
 } 
 export default connect(
   state => ({
+    loading:                  state.loading.loading,
     enableKwork:              state.switchData.enableKwork,
     enableFreelanceRu:        state.switchData.enableFreelanceRu,
     downloadingKwork:         state.switchData.downloadingKwork,

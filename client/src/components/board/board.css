@@ -1,8 +1,9 @@
 .board {
-    width: 85%;
     padding: 30px;
     margin-top: 50px; 
+    margin-right: 100px;
     position: relative;
+    overflow-x: auto;
 }
 .items {
   display: -webkit-box;
@@ -57,9 +58,9 @@
 
 
 .loading{
-  position: absolute;
-  left: 48%;
-  top: 30vh;
+  position: fixed;
+  right: 50%;
+  top: 40vh;
 }
 .lds-roller {
   display: inline-block;

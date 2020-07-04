@@ -7,7 +7,7 @@ import FavoritesBoard from './favoritesBoard/FavoritesBoard';
 import CategoryBoard from './categoryBoard/CategoryBoard';
 import Greeting from './greeting/Greeting';
 import { connect } from 'react-redux'
-import { Spring } from 'react-spring/renderprops'
+import { Spring, Transition, animated } from 'react-spring/renderprops'
 import { STOP_SEARCHING, GET_MORE_ITEMS } from '../../redux/types';
 
 class Board extends React.Component{
@@ -102,9 +102,8 @@ class Board extends React.Component{
                 data = this.sortingDownData()
             }
         }
-        
 
-
+        let isAnimate = Object.keys(data).length  ? false : true;
 
         return(
             <section className = "board-sec" >
@@ -120,6 +119,23 @@ class Board extends React.Component{
                     <div
                         onScroll = {this.onScroll}
                     >
+                    <Transition
+                        items={isAnimate}
+                        from={{  opacity: 0}}
+                        enter={{ opacity: 1}}
+                        leave={{ opacity: 0}}
+                    >
+                    {item => 
+                        item && (props => (
+                            <animated.div
+                                style={props}
+                            >
+                                <Greeting />
+                            </animated.div>
+                    ))}</Transition>
+
+
+
                         {this.props.loading 
                         ? <Spring 
                             from={{opacity: 0, marginTop: -1000}} 
@@ -127,10 +143,11 @@ class Board extends React.Component{
                             delay='300'>
                             {props => (
                                 <div style={props} 
-                                className = "loading"> 
-                                <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> </div>)}
+                                className = "loading"
+                                > 
+                                    <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> </div>)}
                         </Spring> 
-                        : Object.keys(data).length 
+                        : !isAnimate
                             ? <div className = "items">
                                 <Spring
                                     from={{transform: 'translateX(200px)'}} 
@@ -159,9 +176,7 @@ class Board extends React.Component{
                                     )
                                 })}
                             </div>
-                            : <Greeting />
-                            }
-
+                            : null}
                     </div>
                     
                     <Modal /> 

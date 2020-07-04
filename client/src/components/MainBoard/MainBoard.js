@@ -42,7 +42,7 @@ class MainBoard extends React.Component{
                 {props => (<div style={props} className="main-logo">
                     
                     <a href="/" alt="Агрегатор бирж фрилансров" className="">
-                        <div className="logo-title"><span>Freelace</span> Board</div>
+                        <div className="logo-title"><span>Freelacers</span> Board</div>
                         <div className="line"></div>
                         <h1 className="h1">Агрегатор бирж фрилансa</h1>
                     </a>
@@ -54,7 +54,7 @@ class MainBoard extends React.Component{
             <Spring from={{opacity: 0, marginRight: 90 }} to={{opacity: 1, marginRight: 0 }} config={config.slow}>
                 {props=>(<div 
                     style={props}
-                    className = "warning"
+                    className = "warning warning-category"
                     onClick = {() => this.props.warning(CLOSE_WARNING_CATEGORY)}
                 > 1. Выберите категорию
                 </div>)}
@@ -91,7 +91,7 @@ class MainBoard extends React.Component{
                                 this.props.favoritesBoard(HIDE_FAVORITES_BOARD)
                             }
                         }}
-                        className={isVisibleCategoryBoard ? "box active-box" : this.props.categorySelected ? "box" : "box warning-category"}
+                        className={isVisibleCategoryBoard ? "box active-box" : this.props.categorySelected ? "box" : "box warning-buttom"}
                         >
                     </button>
 

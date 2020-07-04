@@ -149,9 +149,11 @@
     }
     .main-board .logo-title {
       font-size: 19px;
+      line-height: 1rem;
     }
     .main-board .logo-title span {
-      font-size: 13px;
+      font-size: 11px;
+      letter-spacing: 0.1px;
     }
     .main-menu .box {
       min-width: 60px;
@@ -174,8 +176,8 @@
       padding: 5px 10px;
     }
     .board {
-      width: 75%;
       margin-top: 15px;
+      margin-right: 85px;
     }
     .options-title{
       text-align: center;
@@ -213,6 +215,30 @@
     @keyframes warning-animation{
       from { right: 90px; }
        to { right: 115px; }
+    }
+    .header-wrap, .steps{
+      margin: 10px;
+    }
+
+    .steps{
+      display: inline-block;
+      padding: 7px;
+      text-align: left;
+    }
+    .steps p{
+      margin-top: 5px;
+    }
+    .steps ol{
+      padding-left: 25px;
+    }
+    .h-1{
+      font-size: 20px;
+      line-height: 1.4rem;
+    }
+    .h-2{
+      margin-top: 10px;
+      font-size: 16px;
+      line-height: 1.6rem;
     }
   }
  

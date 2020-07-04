@@ -16,16 +16,18 @@
 }
 
 .main-logo .logo-title {
-	font-size: 27px;
+	font-size: 28px;
 	font-family: roboto-example;
 	font-weight: bold;
 	text-align: center;
-	line-height: 1.4rem;
+	line-height: 1.3rem;
+	letter-spacing: 1.5px;
 	text-transform: uppercase;
 }
 
 .main-logo .logo-title span {
-	font-size: 14px;
+	font-size: 13px;
+	letter-spacing: 0.1px;
 }
 
 .main-logo .h1 {
@@ -103,11 +105,10 @@ a{
 	position: relative;
 }
 .warning{
-	animation: warning-animation 1s infinite alternate;
+
 	cursor: pointer;
 	z-index: 4;
 	position: fixed;
-
 	border: none;
 	font-size: 17px;
 	color: #ffffff;
@@ -118,16 +119,18 @@ a{
 	-moz-border-radius: 7px;
 	-ms-border-radius: 7px;
 	-o-border-radius: 7px;
-	-webkit-animation: warning-animation 1s infinite alternate;
 }
-.warning-category{
-	top: 165px;
-	right: 120px;
+.warning-buttom{
 	animation: color-text 1s infinite alternate;
 	-webkit-animation: color-text 1s infinite alternate;
 }
+.warning-category{
+	top: 160px;
+	animation: warning-animation 1s infinite alternate;
+	-webkit-animation: warning-animation 1s infinite alternate;
+}
 .warnin-reload{
-	top: 400px;
+	top: 410px;
 	right: 120px;
 }
 @keyframes warning-animation{

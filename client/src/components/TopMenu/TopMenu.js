@@ -52,6 +52,7 @@ class  TopMenu extends React.Component {
             this.props.switchData(STOP_DOWNLOADING_KWORK)
             this.props.loading(IS_LOADING)
             let url = this.props.category.kworkHref
+            
             fetch(url)
             .then(response =>{ 
                 return response.json()

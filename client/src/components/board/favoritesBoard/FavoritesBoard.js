@@ -13,10 +13,10 @@ class FavoritesBoard extends React.Component{
   render(){
     return(
       <Transition  
-      items={this.props.visibleFavoritesBoard}
-      from={{opacity: 0,  transform: 'rotateY(-90deg) translateX(200px)'}}
-      enter={{opacity: 1, transform: 'rotateY(0deg) translateX(0)'}}
-      leave={{opacity: 0, transform: 'rotateY(0deg) translateX(-100px)'}}
+        items={this.props.visibleFavoritesBoard}
+        from={{opacity: 0,  transform: 'rotateY(-90deg) translateX(200px)'}}
+        enter={{opacity: 1, transform: 'rotateY(0deg) translateX(0)'}}
+        leave={{opacity: 0, transform: 'rotateY(0deg) translateX(-100px)'}}
       >
       {item => 
         item && (props => (
@@ -43,7 +43,7 @@ class FavoritesBoard extends React.Component{
               }</ul>
               : <p 
                   className = "favorites-board-message"
-                  >Выберете объяевление и нажмите "запомнить", чтобы мы его сохранили для Вас
+                  >Выберете объявление и нажмите "запомнить", чтобы мы его сохранили для Вас
                 </p>
             }
         </div>))}
