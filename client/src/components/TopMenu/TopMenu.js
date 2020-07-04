@@ -10,11 +10,14 @@ import {
     KWORK, 
     STOP_DOWNLOADING_FREELANCE_RU, 
     FREELANCE_RU, 
-    CLOSE_WARNING_TOP_MENU, 
+    CLOSE_WARNING_TOP_MENU,
+    SET_WARNING_NOTIFICATION,
+    OPEN_WARNING_NOTIFICATION,
+    CLOSE_WARNING_NOTIFICATION, 
 
 } from '../../redux/types';
 import { connect } from 'react-redux';
-import { Spring } from 'react-spring/renderprops';
+import { Spring, Transition } from 'react-spring/renderprops';
 
 class  TopMenu extends React.Component {
     constructor(props){
@@ -60,10 +63,10 @@ class  TopMenu extends React.Component {
             .then(response => JSON.parse(response))
             .then(response => {
                 // console.log('Object.keys(response).length', Object.keys(response).length)
-                if(!Object.keys(response).length){ 
-                    this.props.maindData(DELET_SOME_DATA, KWORK)
-                    return false
-                }
+                // if(!Object.keys(response).length){ 
+                //     this.props.maindData(DELET_SOME_DATA, KWORK)
+                //     return false
+                // }
                 let modResponse = {...response}
                 let len = !Object.keys(this.props.data).length ? 0 : Object.keys(this.props.data).length
                 let obj = {};
@@ -79,8 +82,16 @@ class  TopMenu extends React.Component {
                 else{
                     this.props.maindData(SET_DATA, newState)
                     this.props.loading(IS_NOT_LOADING)
-                }}, (error) => console.log(error) 
+                }} 
             )
+            .catch(error =>{
+                this.props.warning(SET_WARNING_NOTIFICATION, 'Похоже, что kwork будет недоступен пару часов...')
+                this.props.warning(OPEN_WARNING_NOTIFICATION)
+                setTimeout(() => {
+                    this.props.warning(CLOSE_WARNING_NOTIFICATION)
+                }, 5000);
+                this.props.loading(IS_NOT_LOADING)
+            })
         }
         if(prevProps.enableKwork && !this.props.enableKwork ){
             this.props.maindData(DELET_SOME_DATA, KWORK)
@@ -115,10 +126,15 @@ class  TopMenu extends React.Component {
                 else{
                     this.props.maindData(SET_DATA, newState)
                     this.props.loading(IS_NOT_LOADING)
-                    
-                } },   
-                (error) => console.log(error)
-            )
+            }})
+            .catch(error =>{
+                this.props.warning(SET_WARNING_NOTIFICATION, 'Похоже, что Freelance.ru будет недоступен пару часов...')
+                this.props.warning(OPEN_WARNING_NOTIFICATION)
+                setTimeout(() => {
+                    this.props.warning(CLOSE_WARNING_NOTIFICATION)
+                }, 5000);
+                this.props.loading(IS_NOT_LOADING)
+            })
         
         }
         if(prevProps.enableFreelanceRu && !this.props.enableFreelanceRu ){
@@ -153,6 +169,22 @@ class  TopMenu extends React.Component {
                         </div>)}
                     </Spring>}
 
+                    <Transition          
+                        items={this.props.warningNotification}
+                        from={{opacity:0, transform: 'translateY(-250)'}}
+                        enter={{opacity: 1, transform: 'translateY(0)'}}
+                        leave={{opacity: 0, transform: 'translateY(250px)'}}
+                        >
+                            {item =>
+                                item && (props => (
+                                    <div
+                                        className="warning-notification"
+                                        style={props}
+                                    >
+                                        {this.props.warningNotificationText}
+                                    </div>
+                        ))}</Transition>
+
                     <TopMenuItem visibleMenu={this.state.visibleMenu} />
 
                 </div>
@@ -161,6 +193,8 @@ class  TopMenu extends React.Component {
     };
 } export default connect(
     state => ({
+        warningNotification:         state.warning.warningNotification,
+        warningNotificationText:     state.warning.warningNotificationText,
         stepInitial:                 state.warning.stepInitial,
         warningTopMenu:              state.warning.warningTopMenu,
         countOfItemsShow:            state.bord.countOfItemsShow,
@@ -185,8 +219,8 @@ class  TopMenu extends React.Component {
         bord: (type) => {
             dispatch({ type })
         },
-        warning: (type) => {
-            dispatch({ type })
+        warning: (type, data) => {
+            dispatch({ type, data })
         }
     })
   ) (TopMenu)

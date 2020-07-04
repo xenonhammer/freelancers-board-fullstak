@@ -8,10 +8,7 @@ const router = Router();
 router .get('/kwork', 
     async (req, res) => {
         try {
-            let parseData = {};
-
             const resultKwork = await kworkParser(`c=${req.query.c}`);
-            // console.log(req.query.c);
             res.json(JSON.stringify(resultKwork));
             
         } catch (error) {
@@ -24,9 +21,7 @@ router .get('/kwork',
 router .get('/freelance_ru',
     async (req, res) => {
         try {
-            let parseData = {};
-            const resultFreelanceRu = await freelanceParser(`spec=${req.query}`);
-           
+            const resultFreelanceRu = await freelanceParser(`spec=${req.query.spec}`);
             res.json(resultFreelanceRu);
             
         } catch (error) {
