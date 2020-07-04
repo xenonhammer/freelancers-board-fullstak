@@ -27,7 +27,7 @@ const freelanceParser = function(category){
                     parseData[index] = {
                         'id': Math.floor(Math.random()*999999999),
                         'title': $(elem).find('.p_title a span').text(),
-                        'href': $(elem).find('.p_title .ptitle').attr('href'),
+                        'href': `https://freelance.ru${$(elem).find('.p_title .ptitle').attr('href')}`,
                         'price': $(elem).find('.descr .visible-xs.cost_xs').text().replace(/(Бюджет: )?(р\.)?( +)?/ig, ''),
                         'description': $(elem).find('.descr p span').text().replace(/Бюджет:( +)(\d+)?( +)?(\d+)?( +)?(р\.)?(Договорная)?/mig, ''),
                         'website': website

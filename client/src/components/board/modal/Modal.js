@@ -69,12 +69,15 @@ class Modal extends React.Component{
                       className = { this.props.favoriteButton ? "box box-inline active-menu" :  "box box-inline" }
                     >{this.props.favoriteButton ? "забыть" : "запомнить"}
                     </button>
-                    <button 
-                      title       = "Перейти на сайт"
-                      className   = "box box-inline"
-                      onClick     = {() => window.location.href = this.props.dataModal.href}
-                    >перейти
-                    </button>
+                    <a 
+                        className="box" 
+                        // onClick={this.goToPartner}
+                        href={this.props.dataModal.href}
+                        target="_blank"
+                        rel="nofollow noopener noreferrer"
+                        alt="Перейти на фриланс биржу"
+                        >перейти
+                    </a>
                 </div>
             </div>))}
         </Transition>

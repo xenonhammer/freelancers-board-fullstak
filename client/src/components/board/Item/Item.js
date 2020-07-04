@@ -90,12 +90,16 @@ class Item extends React.Component{
                         }
                         >подробнее
                     </button>
-
-                    <button 
+                        
+                    <a 
+                        // onClick={this.goToPartner}
                         className="box" 
-                        onClick={this.goToPartner}
+                        href={this.setHref()}
+                        target="_blank"
+                        rel="nofollow noopener noreferrer"
+                        alt="Перейти на фриланс биржу"
                         >перейти
-                    </button>
+                    </a>
                 </div>
 
             </div>

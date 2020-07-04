@@ -51,9 +51,12 @@ class TopMenuItem extends React.Component{
         > 
           {items => ({ x, opacity, height, paddingTop, paddingBottom, paddingLeft, paddingRight }) => (
             <animated.div 
-              onClick ={items.enable() && !this.props.loading
+              onClick ={items.enable() && !this.props.loading 
               ?() => items.setDisable() 
-              :() => {items.setEnabled();  items.setStartDownload()}}
+              : !this.props.loading 
+                ? () => {items.setEnabled();  items.setStartDownload()}
+                : null
+              } 
               style={{
                 paddingTop,
                 paddingBottom,
