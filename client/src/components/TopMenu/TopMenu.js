@@ -107,10 +107,10 @@ class  TopMenu extends React.Component {
                 return response.json()
             })
             .then(response => {
-                if(!Object.keys(response).length){ 
-                    this.props.maindData(DELET_SOME_DATA, FREELANCE_RU)
-                    return false
-                }
+                // if(!Object.keys(response).length){ 
+                //     this.props.maindData(DELET_SOME_DATA, FREELANCE_RU)
+                //     return false
+                // }
                 let modResponse = {...response}
                 let len = Object.keys(this.props.data).length 
                 let obj = {};
