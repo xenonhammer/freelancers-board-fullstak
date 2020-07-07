@@ -1,9 +1,8 @@
 import React from 'react';
 import './topMenu.css';
 import TopMenuItem from './topMenuItem/TopMenuItem';
-import Warning from '../warning/Warning';
 import { connect } from 'react-redux';
-import { Spring, Transition } from 'react-spring/renderprops';
+import { Spring } from 'react-spring/renderprops';
 
 import { 
     SET_DATA, 

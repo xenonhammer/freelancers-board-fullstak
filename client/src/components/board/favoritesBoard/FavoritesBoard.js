@@ -1,7 +1,7 @@
 import React from 'react';
 import '../optionsBoard.css';
 import { connect } from 'react-redux';
-import { HIDE_FAVORITES_BOARD, GET_FAVORITES, SET_WARNING_NOTIFICATION, OPEN_WARNING_NOTIFICATION, CLOSE_WARNING_NOTIFICATION } from '../../../redux/types';
+import { HIDE_FAVORITES_BOARD, GET_FAVORITES } from '../../../redux/types';
 import FavoriteItem from './FavoriteItem/FavoriteItem';
 import { Transition } from 'react-spring/renderprops';
 
@@ -9,7 +9,7 @@ class FavoritesBoard extends React.Component{
 
   componentDidMount(){
     this.props.favorite(GET_FAVORITES)
-  }
+  } 
   render(){
     return(
       <Transition  

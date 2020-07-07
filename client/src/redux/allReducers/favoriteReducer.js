@@ -43,7 +43,7 @@ export default function favorite ( state = initialState, action){
                 newState.favoriteData[JSON.parse(elem)] = JSON.parse(localStorage.getItem(elem))
                 return newState
             })
-            return {newState, favoriteGetError: false}
+            return {...newState, favoriteGetError: false}
         } catch (error) {
             return {...state, favoriteGetError: true}
         }

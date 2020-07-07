@@ -9,7 +9,7 @@ import Warning from '../warning/Warning';
 import Greeting from './greeting/Greeting';
 import { connect } from 'react-redux'
 import { Spring, Transition, animated } from 'react-spring/renderprops'
-import { STOP_SEARCHING, GET_MORE_ITEMS, SET_WARNING_NOTIFICATION, OPEN_WARNING_NOTIFICATION, CLOSE_WARNING_NOTIFICATION, GET_FAVORITES, FAVORITE_CLEAR_ERROR } from '../../redux/types';
+import { STOP_SEARCHING, GET_MORE_ITEMS, SET_WARNING_NOTIFICATION, OPEN_WARNING_NOTIFICATION, CLOSE_WARNING_NOTIFICATION, FAVORITE_CLEAR_ERROR } from '../../redux/types';
 
 
 class Board extends React.Component{
@@ -147,8 +147,6 @@ class Board extends React.Component{
                                 <Greeting />
                             </animated.div>
                     ))}</Transition>
-
-
 
                         {this.props.loading 
                         ? <Spring 
