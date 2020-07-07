@@ -21,6 +21,7 @@ class App extends React.Component {
   setSearchValueNull(){
     this.setState({ setSearchValue: '' })
   }
+  com
   render(){
     return (
       <div className="App">

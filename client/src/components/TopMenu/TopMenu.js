@@ -1,6 +1,10 @@
 import React from 'react';
 import './topMenu.css';
 import TopMenuItem from './topMenuItem/TopMenuItem';
+import Warning from '../warning/Warning';
+import { connect } from 'react-redux';
+import { Spring, Transition } from 'react-spring/renderprops';
+
 import { 
     SET_DATA, 
     IS_LOADING, 
@@ -14,10 +18,8 @@ import {
     SET_WARNING_NOTIFICATION,
     OPEN_WARNING_NOTIFICATION,
     CLOSE_WARNING_NOTIFICATION, 
-
 } from '../../redux/types';
-import { connect } from 'react-redux';
-import { Spring, Transition } from 'react-spring/renderprops';
+
 
 class  TopMenu extends React.Component {
     constructor(props){
@@ -85,11 +87,12 @@ class  TopMenu extends React.Component {
                 }} 
             )
             .catch(error =>{
-                this.props.warning(SET_WARNING_NOTIFICATION, 'Похоже, что kwork будет недоступен пару часов...')
+                this.props.warning(SET_WARNING_NOTIFICATION, 'Похоже, Kwork пару часов будет недоступен...')
                 this.props.warning(OPEN_WARNING_NOTIFICATION)
                 setTimeout(() => {
                     this.props.warning(CLOSE_WARNING_NOTIFICATION)
                 }, 5000);
+                
                 this.props.loading(IS_NOT_LOADING)
             })
         }
@@ -128,12 +131,12 @@ class  TopMenu extends React.Component {
                     this.props.loading(IS_NOT_LOADING)
             }})
             .catch(error =>{
-                this.props.warning(SET_WARNING_NOTIFICATION, 'Похоже, что Freelance.ru будет недоступен пару часов...')
+                this.props.warning(SET_WARNING_NOTIFICATION, 'Похоже, Freelance.ru пару часов будет недоступен...')
                 this.props.warning(OPEN_WARNING_NOTIFICATION)
                 setTimeout(() => {
                     this.props.warning(CLOSE_WARNING_NOTIFICATION)
                 }, 5000);
-                this.props.loading(IS_NOT_LOADING)
+                this.props.loading(IS_NOT_LOADING);
             })
         
         }
@@ -168,7 +171,7 @@ class  TopMenu extends React.Component {
                         > 2. Выберите биржу
                         </div>)}
                     </Spring>}
-
+{/* 
                     <Transition          
                         items={this.props.warningNotification}
                         from={{opacity:0, transform: 'translateY(-250)'}}
@@ -183,7 +186,7 @@ class  TopMenu extends React.Component {
                                     >
                                         {this.props.warningNotificationText}
                                     </div>
-                        ))}</Transition>
+                        ))}</Transition> */}
 
                     <TopMenuItem visibleMenu={this.state.visibleMenu} />
 

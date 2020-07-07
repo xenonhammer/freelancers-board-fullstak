@@ -6,7 +6,6 @@
 }
 
 .fl-boxs {
-    background-color: rgba(255, 255, 255, 0.534);
     border-radius: 7px;
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
@@ -71,22 +70,4 @@
 @keyframes top-menu-color-text{
 	0%  {background-color: #8FD500;}
     100%    {background-color: #ffffff;}
-}
-.warning-notification{
-    bottom: 5vh;
-    left: 20px;
-    cursor: pointer;
-	z-index: 4;
-	position: fixed;
-	border: none;
-    font-size: 17px;
-    font-weight: bold;
-	color: #ffffff;
-	background-color: #8ed500ed;
-	padding: 15px 30px;
-	border-radius: 7px;
-	-webkit-border-radius: 7px;
-	-moz-border-radius: 7px;
-	-ms-border-radius: 7px;
-	-o-border-radius: 7px;
 }

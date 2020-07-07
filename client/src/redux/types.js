@@ -25,6 +25,7 @@ export const STOP_SORTING                     = 'STOP_SORTING';
 export const ADD_IN_FAVORITE                  = 'ADD_IN_FAVORITE';
 export const DEL_FROM_FAVORITE                = 'DEL_FROM_FAVORITE';
 export const GET_FAVORITES                    = 'GET_FAVORITES';
+export const FAVORITE_CLEAR_ERROR             = 'FAVORITE_CLEAR_ERROR';
 
 export const IS_LOADING                       = 'IS_LOADING';
 export const IS_NOT_LOADING                   = 'IS_NOT_LOADING';

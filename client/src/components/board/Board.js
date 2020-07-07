@@ -5,10 +5,12 @@ import Modal from './modal/Modal'
 import SearchBoard from './SearchBoard/SearchBoard'
 import FavoritesBoard from './favoritesBoard/FavoritesBoard';
 import CategoryBoard from './categoryBoard/CategoryBoard';
+import Warning from '../warning/Warning';
 import Greeting from './greeting/Greeting';
 import { connect } from 'react-redux'
 import { Spring, Transition, animated } from 'react-spring/renderprops'
-import { STOP_SEARCHING, GET_MORE_ITEMS } from '../../redux/types';
+import { STOP_SEARCHING, GET_MORE_ITEMS, SET_WARNING_NOTIFICATION, OPEN_WARNING_NOTIFICATION, CLOSE_WARNING_NOTIFICATION, GET_FAVORITES, FAVORITE_CLEAR_ERROR } from '../../redux/types';
+
 
 class Board extends React.Component{
     constructor(props){
@@ -24,7 +26,19 @@ class Board extends React.Component{
 
     componentDidMount() {
         window.addEventListener('scroll', this.onScroll, true);
-        
+    }
+    componentDidUpdate(){
+        if(this.props.favoriteGetError){
+            this.props.warning(SET_WARNING_NOTIFICATION, 'Извлечение избранного не удалось, пришлось все почистить...')
+            this.props.warning(OPEN_WARNING_NOTIFICATION)
+            setTimeout(() => {
+                this.props.warning(CLOSE_WARNING_NOTIFICATION)
+                this.props.favorite(FAVORITE_CLEAR_ERROR)
+            }, 5000);
+
+            localStorage.clear()
+
+        }
     }
 
     startSearching(data){
@@ -191,6 +205,8 @@ class Board extends React.Component{
                     <FavoritesBoard />
 
                     <CategoryBoard /> 
+                    
+                    <Warning />
 
                 </div>
             </section>
@@ -199,6 +215,7 @@ class Board extends React.Component{
 }; 
 export default connect(
     state => ({
+        favoriteGetError:     state.favorite.favoriteGetError,
         enableKwork:          state.switchData.enableKwork,
         enableFreelanceRu:    state.switchData.enableFreelanceRu,
         visibleCategoryBoard: state.categoryBoard.visibleCategoryBoard,
@@ -222,8 +239,13 @@ export default connect(
         },
         switchData: (type) => {
             dispatch({type})
+        },
+        warning: (type, data) => {
+            dispatch({ type, data})
+        },
+        favorite: (type) => {
+            dispatch({type})
         }
-    
         
     })
 
