@@ -1,33 +1,28 @@
 import React from 'react';
-import { Transition } from 'react-spring/renderprops';
-import { connect } from 'react-redux';
+import {Transition} from 'react-spring/renderprops';
+import {useSelector} from 'react-redux';
 import './warning.css';
 
+export default function Warning () {
+  const state = useSelector(state => state);
 
-class Warning extends React.Component{
-    render(){
-        return(
-            <Transition      
-                items={this.props.warningNotification}
-                from={{opacity:0, transform: 'translateY(-250px)'}}
-                enter={{opacity: 1, transform: 'translateY(0)'}}
-                leave={{opacity: 0, transform: 'translateY(250px)'}}
-                >
-                    {item =>
-                        item && (props => (
-                            <div
-                                className="warning-notification"
-                                style={props}
-                            >
-                                {this.props.warningNotificationText}
-                            </div>
-                ))}
-            </Transition>
-        )
-    }
-}export default connect(
-    state => ({
-        warningNotification:         state.warning.warningNotification,
-        warningNotificationText:     state.warning.warningNotificationText,
-    })
-) (Warning)
+  const { warningNotification, warningNotificationText } = state.warning;
+  return (
+    <Transition
+        items={warningNotification}
+        from={{opacity: 0, transform: 'translateY(-250px)'}}
+        enter={{opacity: 1, transform: 'translateY(0)'}}
+        leave={{opacity: 0, transform: 'translateY(250px)'}}
+      >
+        {item =>
+          item && (props => (
+            <div
+              className="warning-notification"
+              style={props}
+            >
+              {warningNotificationText}
+            </div>
+          ))}
+      </Transition>
+  )
+};

@@ -1,31 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import {Provider} from 'react-redux';
+import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension'
+import {composeWithDevTools} from 'redux-devtools-extension';
 import './index.css';
 import App from './App/App';
-import './media.css'
-import allReducers from './redux/allReducers/allReducers';
-import {Switch, Route, BrowserRouter as Router} from 'react-router-dom'
+import './media.css';
+import {RootState} from './redux/allReducers/allReducers';
+import {Switch, Route, BrowserRouter as Router} from 'react-router-dom';
 import Authenticated from './components/Auth/Authenticated';
 
-const store = createStore(allReducers, composeWithDevTools(applyMiddleware(thunk)));
+const store = createStore(RootState, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <Provider store = {store}>
+      <Provider store={store}>
         <Switch>
-            <Route path="/" exact>
-              <App />
-            </Route>
-            <Route path="/home" exact>
-              <Authenticated />
-            </Route>
-        </Switch>  
+          <Route path="/" exact>
+            <App/>
+          </Route>
+          <Route path="/home" exact>
+            <Authenticated/>
+          </Route>
+        </Switch>
       </Provider>
     </Router>
   </React.StrictMode>,

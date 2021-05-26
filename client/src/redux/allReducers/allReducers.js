@@ -15,7 +15,7 @@ import category    from './categoryReducer';
 import categoryBoard   from './categoryBoardReducer'
 import warning    from './warningReducer'
 
-export default combineReducers({
+export const RootState =  combineReducers({
 
   searchBoard,
   search,

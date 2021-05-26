@@ -1,0 +1,64 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "react",
+    "prettier"
+  ],
+  "extends": [
+    "airbnb-base",
+    "airbnb/rules/react",
+    "airbnb/hooks",
+    "plugin:prettier/recommended",
+    "prettier/react"
+  ],
+
+  "rules": {
+    "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
+    "yoda": "error",
+    "no-duplicate-imports": "error",
+    "no-console": "error",
+    "no-nested-ternary": "error",
+    "import/prefer-default-export": "off",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "react/no-array-index-key": "off",
+    "react/forbid-prop-types": "off",
+    "react/display-name": "off",
+    "react/prop-types": "off",
+    "no-shadow": "off",
+    "id-length": ["error", { "min": 2,  "exceptions": ["s", "t"] }],
+    "arrow-body-style": ["error", "as-needed"],
+    "no-underscore-dangle": "off",
+    "no-use-before-define": ["error","nofunc"],
+    "import/extensions": "error",
+    "react/no-danger": "off"
+  },
+
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    },
+    "react": {
+      "version": "detect"
+    }
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "globals": {
+    "window": true,
+    "document": true,
+    "localStorage": true,
+    "FormData": true,
+    "FileReader": true,
+    "Blob": true,
+    "navigator": true
+  },
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  }
+}
