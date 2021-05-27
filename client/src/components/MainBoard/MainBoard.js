@@ -133,14 +133,14 @@ class MainBoard extends React.Component{
                             this.props.warning(CLOSE_WARNING_RELOAD_DATA)
                             if(this.props.enableKwork){
                                 (async ()=>{
-                                    await this.props.maindData(DELET_SOME_DATA, KWORK)    
+                                    await this.props.mainData(DELET_SOME_DATA, KWORK)
                                         this.props.switchData(START_DOWNLOADING_KWORK)
                                 })()
                                 
                             }
                             if(this.props.enableFreelanceRu){
                                 (async () => {
-                                    await this.props.maindData(DELET_SOME_DATA, FREELANCE_RU)
+                                    await this.props.mainData(DELET_SOME_DATA, FREELANCE_RU)
                                         this.props.switchData(START_DOWNLOADING_FREELANCE_RU)
                                 })()
                                 
@@ -218,7 +218,7 @@ export default connect(
         warning: (type) => {
             dispatch({ type })
         },
-        maindData: (type, data) => {
+        mainData: (type, data) => {
             dispatch({ type, data })
         },
     })

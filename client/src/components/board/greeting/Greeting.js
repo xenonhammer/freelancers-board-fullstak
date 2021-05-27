@@ -357,7 +357,7 @@ class Greeting extends React.Component{
 };
 export default connect(
     state => ({
-        data: state.maindData.data
+        data: state.mainData.data
     }),
     dispatch => ({})
 ) (Greeting)

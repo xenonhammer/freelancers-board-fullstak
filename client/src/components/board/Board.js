@@ -21,13 +21,14 @@ class Board extends React.Component{
         this.state = {
             notResultMessage: false,
             countSearchResult: 0,
+            mainData: this.props.data,
         }
     }
 
     componentDidMount() {
         window.addEventListener('scroll', this.onScroll, true);
     }
-    componentDidUpdate(){
+    componentDidUpdate(prev){
         if(this.props.favoriteGetError){
             this.props.warning(SET_WARNING_NOTIFICATION, 'Извлечение избранного не удалось, пришлось все почистить...')
             this.props.warning(OPEN_WARNING_NOTIFICATION)
@@ -37,8 +38,8 @@ class Board extends React.Component{
             }, 5000);
 
             localStorage.clear()
-
         }
+       if (prev.data !== this.props.data) this.setState({ mainData: this.props.data })
     }
 
     startSearching(data){
@@ -94,12 +95,12 @@ class Board extends React.Component{
         )
     }
     render(){
-       
+
         /* Данные*/
-        let data = this.props.data
+        let data = this.state.mainData
         /*Данные во время поиска*/
         if(this.props.searching) {
-            data = this.startSearching(this.props.data)  
+            data = this.startSearching(this.state.mainData)
          
             /* сортировка по поиску */
             if(this.props.sortToPrice && this.props.sortingStep === 1){
@@ -116,7 +117,7 @@ class Board extends React.Component{
                 data = this.sortingDownData()
             }
         }
-
+        console.log('----',Object.keys(data).length)
         let isAnimate = Object.keys(data).length  ? false : true;
 
         return(
@@ -220,7 +221,7 @@ export default connect(
         loading:              state.loading.loading,
         visibleModalWindow:   state.modalWindow.visibleModalWindow,
         searching:            state.search.searching,
-        data:                 state.maindData.data,
+        data:                 state.mainData.data,
         countOfItemsShow:     state.bord.countOfItemsShow,
         sortToPrice:          state.sorting.sortToPrice,
         sortingStep:          state.sorting.sortingStep
@@ -232,7 +233,7 @@ export default connect(
         bord: (type, data) => { 
             dispatch({ type, data})
         },
-        maindData: (type) => {
+        mainData: (type) => {
             dispatch({ type })
         },
         switchData: (type) => {

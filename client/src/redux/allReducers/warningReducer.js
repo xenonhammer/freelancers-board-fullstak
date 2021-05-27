@@ -37,7 +37,7 @@ export default function warning(state = initialState, action){
     }else if(action.type === CLOSE_WARNING_NOTIFICATION){
         return {...state, warningNotification: false }
     }else if(action.type === SET_WARNING_NOTIFICATION){
-        return {...state, warningNotificationText: action.data }
+        return {...state, warningNotificationText: action.payload }
     }else{
         return state
     }
