@@ -2,11 +2,9 @@ import { STOP_SORTING, DOWN_SORTING, UP_SORTING } from "../types"
 
 
 const initialState = {
-  sortingStep:        0,
+  sortingStep: 0,
   sortToPrice: false
 }
-
-
 
 export default function sorting(state = initialState, action){
 

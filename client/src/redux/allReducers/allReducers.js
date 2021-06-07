@@ -2,10 +2,9 @@ import { combineReducers } from 'redux';
 
 import searchBoard    from './SearchBoardReducer';
 import search         from './searchReducer';
-import favoritesBoard from './FavoritesBoardReducer';
 import mainData     from './dataReducer';
 import modalWindow    from './ModalWindowReducer';
-import bord           from './BordReducer';
+import board           from './BordReducer';
 import partners       from './partnersReducer';
 import sorting        from './sortingReducer';
 import favorite       from './favoriteReducer';
@@ -19,10 +18,9 @@ export const RootState =  combineReducers({
 
   searchBoard,
   search,
-  favoritesBoard,
   mainData,
   modalWindow,
-  bord,
+  board,
   partners,
   sorting,
   favorite,

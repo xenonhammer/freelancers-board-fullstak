@@ -4,11 +4,12 @@ const initialState = {
   countOfItemsShow: 10
 }
 
-export default function bord(state = initialState, action){
+export default function board(state = initialState, action){
 
   if(action.type === GET_MORE_ITEMS){
+    const dataLength = Object.keys(action.payload).length;
     return {...state,
-      countOfItemsShow: (()=> Math.min(state.countOfItemsShow + 5, Object.keys(action.data).length ? Object.keys(action.data).length : 10))() }
+      countOfItemsShow: (()=> Math.min(state.countOfItemsShow + 5, dataLength ? dataLength : 10))() }
   }else if(action.type === SET_START_COUNT_ITEM){
     return {...state,
     countOfItemsShow: 15}

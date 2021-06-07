@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { DEL_FROM_FAVORITE } from '../../../../redux/types';
+import { REMOVE_FROM_FAVORITE } from '../../../../redux/types';
 
 class FavoritItem extends React.Component{
     setHref(){
@@ -38,7 +38,7 @@ class FavoritItem extends React.Component{
                     className = "favorite-item-btn box"
                 >Перейти на сайт</button>
                 <button 
-                    onClick={() => this.props.favorite(DEL_FROM_FAVORITE, this.props.favoriteData)}
+                    onClick={() => this.props.favorite(REMOVE_FROM_FAVORITE, this.props.favoriteData)}
                     className = "favorite-item-btn box"
                 >Удалить</button>
             </li>

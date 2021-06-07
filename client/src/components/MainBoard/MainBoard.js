@@ -28,7 +28,7 @@ class MainBoard extends React.Component{
     const isSortToPrice           = this.props.sortToPrice
       
     const isVisibleSearchBoard    = this.props.visibleSearchBoard
-    const isVisibleFavoritesBoard = this.props.visibleFavoritesBoard
+    const isShowFavoritesBoard = this.props.isShowFavoritesBoard
     const isVisibleCategoryBoard  = this.props.visibleCategoryBoard
     return(
 
@@ -88,7 +88,7 @@ class MainBoard extends React.Component{
                             }else{
                                 this.props.categoryBoard(SHOW_CATEGORY_BOARD)
                                 this.props.searchBoard(HIDE_SEARCH_BOARD)
-                                this.props.favoritesBoard(HIDE_FAVORITES_BOARD)
+                                this.props.favorite(HIDE_FAVORITES_BOARD)
                             }
                         }}
                         className={isVisibleCategoryBoard ? "box active-box" : this.props.categorySelected ? "box" : "box warning-buttom"}
@@ -101,7 +101,7 @@ class MainBoard extends React.Component{
                                 this.props.searchBoard(HIDE_SEARCH_BOARD)
                             }else{
                                 this.props.searchBoard(SHOW_SEARCH_BOARD)
-                                this.props.favoritesBoard(HIDE_FAVORITES_BOARD)
+                                this.props.favorite(HIDE_FAVORITES_BOARD)
                                 this.props.categoryBoard(HIDE_CATEGORY_BOARD)
                             }
                         }}
@@ -150,15 +150,15 @@ class MainBoard extends React.Component{
               
                     <button 
                         onClick   = {() => {
-                            if(isVisibleFavoritesBoard){
-                                this.props.favoritesBoard(HIDE_FAVORITES_BOARD)
+                            if(isShowFavoritesBoard){
+                                this.props.favorite(HIDE_FAVORITES_BOARD)
                             }else{
-                                this.props.favoritesBoard(SHOW_FAVORITES_BOARD)
+                                this.props.favorite(SHOW_FAVORITES_BOARD)
                                 this.props.searchBoard(HIDE_SEARCH_BOARD)
                                 this.props.categoryBoard(HIDE_CATEGORY_BOARD)
                             }
                         }}
-                        className = { isVisibleFavoritesBoard ? "box favorite-btn active-box" : "box favorite-btn" }
+                        className = { isShowFavoritesBoard ? "box favorite-btn active-box" : "box favorite-btn" }
                         > 
                         {this.props.countOfFavorites > 0 && 
                         <Spring 
@@ -192,7 +192,7 @@ export default connect(
         categorySelected:      state.category.categorySelected,
         visibleCategoryBoard:  state.categoryBoard.visibleCategoryBoard,
         visibleSearchBoard:    state.searchBoard.visibleSearchBoard,
-        visibleFavoritesBoard: state.favoritesBoard.visibleFavoritesBoard,
+        isShowFavoritesBoard: state.favorite.isShowFavoritesBoard,
         sortToPrice:           state.sorting.sortToPrice,
         sortingStep:           state.sorting.sortingStep,
         countOfFavorites:      state.favorite.countOfFavorites,
@@ -203,7 +203,7 @@ export default connect(
         searchBoard: (type) => {
             dispatch({ type })
           },
-        favoritesBoard: (type) => {
+        favorite: (type) => {
             dispatch({ type })
         },
         sorting: (type) => {

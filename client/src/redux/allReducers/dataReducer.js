@@ -4,11 +4,11 @@ const initialState = {
   data: {},
 };
 
-export default function mainData(state = initialState, payload) {
-  if (payload.type === SET_DATA) {
-    return { ...state, data: payload.data};
-  } else if (payload.type === DELET_SOME_DATA) {
-    return { ...state, data: Object.values(state.data).filter(elem => elem.website !== payload) };
+export default function mainData(state = initialState, action) {
+  if (action.type === SET_DATA) {
+    return { ...state, data: action.payload};
+  } else if (action.type === DELET_SOME_DATA) {
+    return { ...state, data: Object.values(state.data).filter(elem => elem.website !== action.payload) };
   } else {
     return state;
   }

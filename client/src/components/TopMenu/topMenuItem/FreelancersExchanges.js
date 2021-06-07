@@ -1,4 +1,4 @@
-import { switchDataAction } from '../../../redux/actions/swichDataAction';
+import { switchDataAction } from '../../../redux/actions/swichDataActions';
 
 const { kwork, freelanceRu } = switchDataAction;
 export default function freelancersExchanges (state, dispatch) {

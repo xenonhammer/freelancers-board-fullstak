@@ -3,15 +3,14 @@ import './topMenu.css';
 import TopMenuItem from './topMenuItem/TopMenuItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { Spring } from 'react-spring/renderprops';
-import { loadingAction } from '../../redux/actions/loadingAction';
-import { switchDataAction } from '../../redux/actions/swichDataAction';
+import { loadingActions } from '../../redux/actions/loadingActions';
+import { switchDataAction } from '../../redux/actions/swichDataActions';
 import { warningAction } from '../../redux/actions/warningActions';
 import { mainDataAction } from '../../redux/actions/mainDataActions';
 
 export default function TopMenu() {
-  const state = useSelector(state => state);
+  const { category, switchData, mainData, warning } = useSelector(state => state);
   const dispatch = useDispatch();
-  const { category, switchData, mainData, warning } = state;
   const [visibleMenu, setVisibleMenu] = useState(false);
   const [btnShowTopMenu, setBtnShowTopMenu] = useState('Показать фриланс биржи');
 
@@ -50,26 +49,26 @@ export default function TopMenu() {
   async function getKwor() {
     const url = category.category.kworkHref;
     dispatch(switchDataAction.kwork.setStopDownload())
-    dispatch(loadingAction.enable());
+    dispatch(loadingActions.enable());
 
     const data = await fetchData(url)
 
     if (data) {
       dispatch(mainDataAction.setData(data));
-      dispatch(loadingAction.disable());
+      dispatch(loadingActions.disable());
     }
   }
 
   async function getFreelanceRu() {
     const url = category.category.freelance_ruHref;
     dispatch(switchDataAction.freelanceRu.setStopDownload)
-    dispatch(loadingAction.enable());
+    dispatch(loadingActions.enable());
 
     const data = await fetchData(url)
 
     if (data) {
       dispatch(mainDataAction.setData(data));
-      dispatch(loadingAction.disable());
+      dispatch(loadingActions.disable());
     }
   }
 

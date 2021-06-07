@@ -5,7 +5,7 @@ import {
   HIDE_MODAL_WINDOW, 
   ADD_IN_FAVORITE, 
   IS_FAVORITE, 
-  DEL_FROM_FAVORITE, 
+  REMOVE_FROM_FAVORITE,
   IS_NOT_FAVORRITE, 
 } from '../../../redux/types';
 import { Transition, config } from 'react-spring/renderprops';
@@ -58,7 +58,7 @@ class Modal extends React.Component{
                       title     = "Добавить в избранное"
                       onClick   = {
                         this.props.favoriteButton ? () => {
-                          this.props.favorite(DEL_FROM_FAVORITE, this.props.dataModal); 
+                          this.props.favorite(REMOVE_FROM_FAVORITE, this.props.dataModal);
                           this.props.modalWindow(IS_NOT_FAVORRITE);
                         } : 
                         () => {
